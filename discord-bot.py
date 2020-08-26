@@ -29,7 +29,8 @@ async def jayden():
 async def change_status():
     await bot.wait_until_ready()
 
-    statuses = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', ".cum"])
+    statuses = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
+                      'Harris is .cum master'])
 
     while not bot.is_closed():
         status = next(statuses)
