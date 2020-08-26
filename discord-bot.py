@@ -51,6 +51,6 @@ async def change_jayden():
         await asyncio.sleep(10)
 
 
-bot.loop.create_task(change_jayden())
+# bot.loop.create_task(change_jayden())
 bot.loop.create_task(change_status())
 bot.run(token)
