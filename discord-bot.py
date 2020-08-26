@@ -4,6 +4,7 @@ from itertools import cycle
 import asyncio
 
 bot = commands.Bot(command_prefix=".")
+token = open("token.txt", "r").read()
 
 
 @bot.command()
@@ -52,4 +53,4 @@ async def change_jayden():
 
 bot.loop.create_task(change_jayden())
 bot.loop.create_task(change_status())
-bot.run('NzQ3OTg0Mjg5MTg1OTIzMDg0.X0W0pw.RhM_lJ6aEfptAYlQOdUXIw5NZn0')
+bot.run(token)
