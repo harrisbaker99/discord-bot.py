@@ -22,6 +22,24 @@ async def mms(ctx, args=0):
         await ctx.send(file=discord.File(mms_img))
 
 
+@bot.command()
+async def slut(ctx, args=None):
+    if args is None:
+        await ctx.send("Please specify a slut to add")
+    else:
+        await slut_txt('sluts.txt', str(args))
+        await ctx.send(str(args) + " was added to the sluts.")
+
+
+async def slut_txt(file_name, slut_to_add):
+    with open(file_name, 'a+') as file_object:
+        file_object.seek(0)
+        data = file_object.read(100)
+        if len(data) > 0:
+            file_object.write("\n")
+        file_object.write(str(slut_to_add))
+
+
 async def change_status():
     await bot.wait_until_ready()
 
