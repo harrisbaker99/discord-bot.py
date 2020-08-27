@@ -51,6 +51,25 @@ async def change_jayden():
         await asyncio.sleep(43200)
 
 
+async def change_harris():
+    await bot.wait_until_ready()
+    nicknames = cycle(['Commander Cock', 'Cum Master', 'Cum Cum', 'Cum Slut', 'PurePhoenix'])
+
+    harris_id = bot.get_user(230854079847464960)
+
+    for guild in bot.guilds:
+        for member in guild.members:
+            if member == harris_id:
+                harris_name = member
+
+    while not bot.is_closed():
+        nickname = next(nicknames)
+
+        await change_nick(harris_name, nickname)
+
+        await asyncio.sleep(20)
+
+
 bot.loop.create_task(change_jayden())
 bot.loop.create_task(change_status())
 bot.run(token)
