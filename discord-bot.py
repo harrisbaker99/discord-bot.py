@@ -14,18 +14,6 @@ async def cum(ctx, args=1):
         await ctx.send(str(emoji) * args)
 
 
-# 142933221015945216
-
-
-async def jayden():
-    gayden = bot.get_user(142933221015945216)
-    if gayden:
-        await bot.user.edit(id=142933221015945216, nick='cock')
-        print(bot.get_user(142933221015945216))
-    else:
-        print("the fuck am i doing")
-
-
 async def change_status():
     await bot.wait_until_ready()
 
@@ -40,18 +28,29 @@ async def change_status():
         await asyncio.sleep(10)
 
 
+async def change_nick(member: discord.Member, nick):
+    await member.edit(nick=nick)
+
+
 async def change_jayden():
     await bot.wait_until_ready()
-    nicknames = cycle(['Big Dickhead', 'CockSucker'])
+    nicknames = cycle(['Big Dickhead', 'CockSucker', 'Fucktard', 'Wankstick', 'Retard', 'Spastic Cunt'])
+
+    jayden_id = bot.get_user(142933221015945216)
+
+    for guild in bot.guilds:
+        for member in guild.members:
+            if member == jayden_id:
+                jayden_name = member
 
     while not bot.is_closed():
         nickname = next(nicknames)
 
-        await jayden()
+        await change_nick(jayden_name, nickname)
 
-        await asyncio.sleep(10)
+        await asyncio.sleep(43200)
 
 
-# bot.loop.create_task(change_jayden())
+bot.loop.create_task(change_jayden())
 bot.loop.create_task(change_status())
 bot.run(token)
