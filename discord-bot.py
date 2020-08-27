@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands, tasks
 from itertools import cycle
 import asyncio
+import os
 
 bot = commands.Bot(command_prefix=".")
 token = open("token.txt", "r").read()
@@ -12,6 +13,13 @@ async def cum(ctx, args=1):
     emoji = bot.get_emoji(702822392371740684)
     if int(args) <= 50:
         await ctx.send(str(emoji) * args)
+
+
+@bot.command()
+async def mms(ctx, args=0):
+    if int(args) <= 10:
+        mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
+        await ctx.send(file=discord.File(mms_img))
 
 
 async def change_status():
