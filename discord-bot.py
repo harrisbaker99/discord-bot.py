@@ -27,8 +27,21 @@ async def slut(ctx, args=None):
     if args is None:
         await ctx.send("Please specify a slut to add")
     else:
-        await slut_txt('sluts.txt', str(args))
-        await ctx.send(str(args) + " was added to the sluts.")
+        with open('sluts.txt') as f:
+            if str(args) in f.read():
+                await ctx.send(str(args) + " is already in the slut search.")
+            else:
+                await slut_txt('sluts.txt', str(args))
+                await ctx.send(str(args) + " was added to the sluts.")
+                # await instaloader(str(args))
+
+
+@bot.command()
+async def slutlist(ctx):
+    f = open('sluts.txt')
+    for line in f:
+        await ctx.send(line),
+    f.close()
 
 
 async def slut_txt(file_name, slut_to_add):
@@ -44,7 +57,7 @@ async def change_status():
     await bot.wait_until_ready()
 
     statuses = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
-                      'Harris is .cum master'])
+                      'Harris is .cum master', '.mms', '.slut'])
 
     while not bot.is_closed():
         status = next(statuses)
@@ -60,6 +73,13 @@ async def change_role_colour_function(role: discord.Role, r, g, b):
     await role.edit(colour=discord.Colour.from_rgb(r, g, b))
 
 
+async def instaloader(sluts):
+    arguments = ' --no-videos --no-video-thumbnails --no-captions --no-metadata-json --no-compress-json ' \
+                '--count 5 --filename-pattern {shortcode}_{profile}'
+    print('instaloader ' + arguments)
+    os.system('instaloader ' + str(sluts) + arguments)
+
+
 async def change_jayden():
     await bot.wait_until_ready()
     nicknames = cycle(['Big Dickhead', 'CockSucker', 'Fucktard', 'Wankstick', 'Retard', 'Spastic Cunt'])
@@ -73,12 +93,12 @@ async def change_jayden():
     while not bot.is_closed():
         nickname = next(nicknames)
         await change_nick(jayden_name, nickname)
-        await asyncio.sleep(43200)
+        await asyncio.sleep(3600)
 
 
 async def change_harris():
     await bot.wait_until_ready()
-    nicknames = cycle(['Commander Cock', 'Cum Master', 'Cum Cum', 'Cum Slut', 'PurePhoenix'])
+    nicknames = cycle(['Commander Cock', 'Cum Master', 'Cum Cum', 'Cum Slut', 'PurePhoenix', 'Boi Underpant'])
     harris_id = bot.get_user(230854079847464960)
     guild_id = bot.get_guild(368541462188654592)
 
@@ -92,6 +112,18 @@ async def change_harris():
         nickname = next(nicknames)
         await change_nick(harris_name, nickname)
         await asyncio.sleep(20)
+
+
+async def yoink_sluts():
+    await bot.wait_until_ready()
+    guild_id = bot.get_guild(368541462188654592)
+    channel = bot.get_channel(720218331524890705)
+
+    while not bot.is_closed():
+
+        # await change_nick(harris_name, nickname)
+
+        await asyncio.sleep(21600)
 
 
 async def change_role_colour():
