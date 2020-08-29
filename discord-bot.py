@@ -23,25 +23,86 @@ async def mms(ctx, args=0):
 
 
 @bot.command()
-async def slut(ctx, args=None):
-    if args is None:
+async def slut(ctx, *args):
+    argcount = len(args)
+    if argcount <= 0:
         await ctx.send("Please specify a slut to add")
+    elif argcount > 1:
+        await ctx.send("Should be only one word you fucking spastic")
     else:
+        bigargs = ""
+        for elem in args:
+            bigargs += elem
         with open('sluts.txt') as f:
-            if str(args) in f.read():
-                await ctx.send(str(args) + " is already in the slut search.")
+            if str(bigargs) in f.read():
+                await ctx.send(str(bigargs) + " is already in the slut search.")
             else:
-                await slut_txt('sluts.txt', str(args))
-                await ctx.send(str(args) + " was added to the sluts.")
-                # await instaloader(str(args))
+                await slut_txt('sluts.txt', str(bigargs))
+                await ctx.send(str(bigargs) + " was added to the sluts.")
+                # await instaloader(str(bigargs))
 
 
 @bot.command()
 async def slutlist(ctx):
-    f = open('sluts.txt')
-    for line in f:
-        await ctx.send(line),
-    f.close()
+    filesize = os.path.getsize('sluts.txt')
+    if filesize == 0:
+        await ctx.send('No sluts are in the slut database.')
+    else:
+        f = open('sluts.txt')
+        for line in f:
+            await ctx.send(line),
+        f.close()
+
+
+@bot.command()
+async def rmslut(ctx, *args):
+    argcount = len(args)
+    if argcount <= 0:
+        await ctx.send("Please specify a slut to remove")
+    elif argcount > 1:
+        await ctx.send("Should be only one word you fucking spastic")
+    else:
+        bigargs = ""
+        for elem in args:
+            bigargs += elem
+        with open('sluts.txt', "r+") as f:
+            d = f.readlines()
+            f.seek(0)
+            for i in d:
+                if i != bigargs:
+                    f.write(i)
+            f.truncate()
+        await ctx.send("Slut removed")
+
+
+@bot.command()
+async def jlist(ctx):
+    filesize = os.path.getsize('jlist.txt')
+    if filesize == 0:
+        await ctx.send('No sluts are in the slut database.')
+    else:
+        f = open('jlist.txt')
+        for line in f:
+            await ctx.send(line),
+        f.close()
+
+
+@bot.command()
+async def jgay(ctx, *args):
+    argcount = len(args)
+    if argcount <= 0:
+        await ctx.send("Specify a name for the faggot.")
+    else:
+        bigargs = ""
+        for elem in args:
+            bigargs += elem
+        with open('jlist.txt') as f:
+            if str(bigargs) in f.read():
+                await ctx.send(str(bigargs) + " is already in the dickhead list.")
+            else:
+                await slut_txt('jlist.txt', str(bigargs))
+                await ctx.send(str(bigargs) + " was added to the dickheads list.")
+                # await instaloader(str(bigargs))
 
 
 async def slut_txt(file_name, slut_to_add):
@@ -93,7 +154,7 @@ async def change_jayden():
     while not bot.is_closed():
         nickname = next(nicknames)
         await change_nick(jayden_name, nickname)
-        await asyncio.sleep(3600)
+        await asyncio.sleep(21600)
 
 
 async def change_harris():
@@ -120,7 +181,6 @@ async def yoink_sluts():
     channel = bot.get_channel(720218331524890705)
 
     while not bot.is_closed():
-
         # await change_nick(harris_name, nickname)
 
         await asyncio.sleep(21600)
@@ -137,8 +197,7 @@ async def change_role_colour():
 
     for guild in bot.guilds:
         if guild == guild_id:
-            role = discord.utils.get(guild_id.roles, name="Homos")
-            print(role)
+            role = discord.utils.get(guild_id.roles, name="Rainbow")
 
     while not bot.is_closed():
         r_colour = int(next(r_colours))
@@ -147,7 +206,7 @@ async def change_role_colour():
 
         # print('r: ' + str(r_colour) + ' ' + 'g: ' + str(g_colour) + ' ' + 'b: ' + str(b_colour))
         await change_role_colour_function(role, r_colour, g_colour, b_colour)
-        await asyncio.sleep(10)
+        await asyncio.sleep(0.2)
 
 
 bot.loop.create_task(change_jayden())
