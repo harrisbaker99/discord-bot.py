@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands, tasks
+from discord.utils import get
 from itertools import cycle
 import asyncio
 import os
@@ -20,6 +21,26 @@ async def mms(ctx, args=0):
     if int(args) <= 10:
         mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
         await ctx.send(file=discord.File(mms_img))
+
+
+@bot.command()
+async def CUM(ctx):
+    cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
+    channel = ctx.message.author.voice.channel
+    voice = get(bot.voice_clients, guild=ctx.guild)
+
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
+    else:
+        voice = await channel.connect()
+        print(f"The bot has connected to {channel}\n")
+
+    voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+    voice.source = discord.PCMVolumeTransformer(voice.source)
+    voice.source.volume = 0.2
+    await asyncio.sleep(7)
+    voice.stop()
+    await voice.disconnect()
 
 
 @bot.command()
@@ -69,17 +90,17 @@ async def rmslut(ctx, *args):
             d = f.readlines()
             f.seek(0)
             for i in d:
+                print(i + bigargs)
                 if i != bigargs:
                     f.write(i)
             f.truncate()
-        await ctx.send("Slut removed")
 
 
 @bot.command()
 async def jlist(ctx):
     filesize = os.path.getsize('jlist.txt')
     if filesize == 0:
-        await ctx.send('No sluts are in the slut database.')
+        await ctx.send('No nicknames for the dickhead in the database.')
     else:
         f = open('jlist.txt')
         for line in f:
@@ -141,9 +162,12 @@ async def instaloader(sluts):
     os.system('instaloader ' + str(sluts) + arguments)
 
 
+# async def dickheadarray():
+
+
 async def change_jayden():
     await bot.wait_until_ready()
-    nicknames = cycle(['Big Dickhead', 'CockSucker', 'Fucktard', 'Wankstick', 'Retard', 'Spastic Cunt'])
+    nicknames = cycle(dickheadarray())
     jayden_id = bot.get_user(142933221015945216)
 
     for guild in bot.guilds:
