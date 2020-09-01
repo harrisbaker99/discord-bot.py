@@ -1,5 +1,5 @@
 import discord
-from discord.ext import commands, tasks
+from discord.ext import commands
 from discord.utils import get
 from itertools import cycle
 import asyncio
@@ -7,6 +7,7 @@ import os
 
 bot = commands.Bot(command_prefix=".")
 token = open("token.txt", "r").read()
+jayden_list = list()
 
 
 @bot.command()
@@ -33,7 +34,6 @@ async def CUM(ctx):
         await voice.move_to(channel)
     else:
         voice = await channel.connect()
-        print(f"The bot has connected to {channel}\n")
 
     voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
     voice.source = discord.PCMVolumeTransformer(voice.source)
@@ -41,6 +41,7 @@ async def CUM(ctx):
     await asyncio.sleep(7)
     voice.stop()
     await voice.disconnect()
+    await discord.Message.delete(ctx.message)
 
 
 @bot.command()
@@ -104,7 +105,8 @@ async def jlist(ctx):
     else:
         f = open('jlist.txt')
         for line in f:
-            await ctx.send(line),
+            await ctx.send(line)
+            await asyncio.sleep(0.5)
         f.close()
 
 
@@ -116,7 +118,8 @@ async def jgay(ctx, *args):
     else:
         bigargs = ""
         for elem in args:
-            bigargs += elem
+            bigargs += elem + " "
+        bigargs = bigargs[:-1]
         with open('jlist.txt') as f:
             if str(bigargs) in f.read():
                 await ctx.send(str(bigargs) + " is already in the dickhead list.")
@@ -162,12 +165,21 @@ async def instaloader(sluts):
     os.system('instaloader ' + str(sluts) + arguments)
 
 
-# async def dickheadarray():
+async def dickheadarray():
+    filesize = os.path.getsize('jlist.txt')
+    del jayden_list[:]
+    if filesize == 0:
+        print(f"The jlist text file is empty.")
+    else:
+        f = open('jlist.txt')
+        for line in f:
+            # print(line)
+            jayden_list.append(line)
+        f.close()
 
 
 async def change_jayden():
     await bot.wait_until_ready()
-    nicknames = cycle(dickheadarray())
     jayden_id = bot.get_user(142933221015945216)
 
     for guild in bot.guilds:
@@ -176,9 +188,13 @@ async def change_jayden():
                 jayden_name = member
 
     while not bot.is_closed():
-        nickname = next(nicknames)
-        await change_nick(jayden_name, nickname)
-        await asyncio.sleep(21600)
+        await dickheadarray()
+        i = 0
+        while i < len(jayden_list):
+            print(f"Jayden's current nickname is: {jayden_list[i]}.")
+            await change_nick(jayden_name, jayden_list[i])
+            await asyncio.sleep(21600)
+            i += 1
 
 
 async def change_harris():
