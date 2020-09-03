@@ -12,6 +12,7 @@ jayden_list = list()
 
 @bot.command()
 async def cum(ctx, args=1):
+    await discord.Message.delete(ctx.message)
     emoji = bot.get_emoji(702822392371740684)
     if int(args) <= 50:
         await ctx.send(str(emoji) * args)
@@ -22,6 +23,7 @@ async def mms(ctx, args=0):
     if int(args) <= 10:
         mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
         await ctx.send(file=discord.File(mms_img))
+    await discord.Message.delete(ctx.message)
 
 
 @bot.command()
@@ -129,6 +131,26 @@ async def jgay(ctx, *args):
                 # await instaloader(str(bigargs))
 
 
+@bot.command()
+async def rmgay(ctx, *args):
+    argcount = len(args)
+    if argcount <= 0:
+        await ctx.send("Please specify a nickname to remove")
+    else:
+        bigargs = ""
+        for elem in args:
+            bigargs += elem + " "
+        bigargs = bigargs[:-1]
+        with open('jlist.txt', "r+") as f:
+            d = f.readlines()
+            f.seek(0)
+            for i in d:
+                print(i + bigargs)
+                if i != bigargs:
+                    f.write(i)
+            f.truncate()
+
+
 async def slut_txt(file_name, slut_to_add):
     with open(file_name, 'a+') as file_object:
         file_object.seek(0)
@@ -140,10 +162,8 @@ async def slut_txt(file_name, slut_to_add):
 
 async def change_status():
     await bot.wait_until_ready()
-
     statuses = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
                       'Harris is .cum master', '.mms', '.slut'])
-
     while not bot.is_closed():
         status = next(statuses)
         await bot.change_presence(activity=discord.Game(status))
@@ -228,9 +248,7 @@ async def yoink_sluts():
 
 async def change_role_colour():
     await bot.wait_until_ready()
-
     guild_id = bot.get_guild(368541462188654592)
-
     r_colours = cycle([255, 255, 255, 155, 0, 0, 0, 0, 0, 155, 255, 255])
     g_colours = cycle([0, 155, 255, 255, 255, 255, 255, 155, 0, 0, 0, 0])
     b_colours = cycle([0, 0, 0, 0, 0, 155, 255, 255, 255, 255, 255, 155])
@@ -243,7 +261,6 @@ async def change_role_colour():
         r_colour = int(next(r_colours))
         g_colour = int(next(g_colours))
         b_colour = int(next(b_colours))
-
         # print('r: ' + str(r_colour) + ' ' + 'g: ' + str(g_colour) + ' ' + 'b: ' + str(b_colour))
         await change_role_colour_function(role, r_colour, g_colour, b_colour)
         await asyncio.sleep(0.2)
