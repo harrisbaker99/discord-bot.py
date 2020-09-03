@@ -12,10 +12,10 @@ jayden_list = list()
 
 @bot.command()
 async def cum(ctx, args=1):
-    await discord.Message.delete(ctx.message)
     emoji = bot.get_emoji(702822392371740684)
     if int(args) <= 50:
         await ctx.send(str(emoji) * args)
+    await discord.Message.delete(ctx.message)
 
 
 @bot.command()
