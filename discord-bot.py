@@ -205,7 +205,7 @@ async def harrisarray():
     if filesize == 0:
         print(f"The jlist text file is empty.")
     else:
-        f = open('jlist.txt')
+        f = open('hlist.txt')
         for line in f:
             # print(line)
             harris_list.append(line)
