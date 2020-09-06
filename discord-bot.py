@@ -225,7 +225,7 @@ async def change_jayden():
         await dickheadarray()
         i = 0
         while i < len(jayden_list):
-            print(f"Jayden's current nickname is: {jayden_list[i]}.")
+            # print(f"Jayden's current nickname is: {jayden_list[i]}.")
             await change_nick(jayden_name, jayden_list[i])
             await asyncio.sleep(21600)
             i += 1
