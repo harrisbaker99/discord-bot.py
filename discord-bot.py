@@ -8,6 +8,7 @@ import os
 bot = commands.Bot(command_prefix=".")
 token = open("token.txt", "r").read()
 jayden_list = list()
+harris_list = list()
 
 
 @bot.command()
@@ -198,6 +199,19 @@ async def dickheadarray():
         f.close()
 
 
+async def harrisarray():
+    filesize = os.path.getsize('hlist.txt')
+    del harris_list[:]
+    if filesize == 0:
+        print(f"The jlist text file is empty.")
+    else:
+        f = open('jlist.txt')
+        for line in f:
+            # print(line)
+            harris_list.append(line)
+        f.close()
+
+
 async def change_jayden():
     await bot.wait_until_ready()
     jayden_id = bot.get_user(142933221015945216)
@@ -230,9 +244,11 @@ async def change_harris():
                     harris_name = member
 
     while not bot.is_closed():
-        nickname = next(nicknames)
-        await change_nick(harris_name, nickname)
-        await asyncio.sleep(20)
+        await harrisarray()
+        i = 0
+        while i < len(jayden_list):
+            await change_nick(harris_name, harris_list[i])
+            await asyncio.sleep(3600)
 
 
 async def yoink_sluts():
