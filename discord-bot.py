@@ -233,7 +233,6 @@ async def change_jayden():
 
 async def change_harris():
     await bot.wait_until_ready()
-    nicknames = cycle(['Commander Cock', 'Cum Master', 'Cum Cum', 'Cum Slut', 'PurePhoenix', 'Boi Underpant'])
     harris_id = bot.get_user(230854079847464960)
     guild_id = bot.get_guild(368541462188654592)
 
@@ -246,9 +245,10 @@ async def change_harris():
     while not bot.is_closed():
         await harrisarray()
         i = 0
-        while i < len(jayden_list):
+        while i < len(harris_list):
             await change_nick(harris_name, harris_list[i])
-            await asyncio.sleep(3600)
+            await asyncio.sleep(5)
+            i += 1
 
 
 async def yoink_sluts():
