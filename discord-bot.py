@@ -247,7 +247,7 @@ async def change_harris():
         i = 0
         while i < len(harris_list):
             await change_nick(harris_name, harris_list[i])
-            await asyncio.sleep(5)
+            await asyncio.sleep(3600)
             i += 1
 
 
