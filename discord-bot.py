@@ -132,6 +132,13 @@ async def jgay(ctx, *args):
                 # await instaloader(str(bigargs))
 
 
+@bot.event
+async def on_message(ctx):
+    bot_message = ctx.message
+    if "Here are ByteMe" in bot_message:
+        await discord.Message.delete(bot_message)
+
+
 @bot.command()
 async def rmgay(ctx, *args):
     argcount = len(args)
@@ -227,7 +234,7 @@ async def change_jayden():
         while i < len(jayden_list):
             # print(f"Jayden's current nickname is: {jayden_list[i]}.")
             await change_nick(jayden_name, jayden_list[i])
-            await asyncio.sleep(21600)
+            await asyncio.sleep(86400)
             i += 1
 
 
