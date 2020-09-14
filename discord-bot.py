@@ -132,13 +132,6 @@ async def jgay(ctx, *args):
                 # await instaloader(str(bigargs))
 
 
-@bot.event
-async def on_message(ctx):
-    bot_message = ctx.message
-    if "Here are ByteMe" in bot_message:
-        await discord.Message.delete(bot_message)
-
-
 @bot.command()
 async def rmgay(ctx, *args):
     argcount = len(args)
