@@ -5,7 +5,7 @@ from itertools import cycle
 import asyncio
 import os
 
-bot = commands.Bot(command_prefix=".")
+bot = commands.Bot(command_prefix="_ _ ")
 token = open("token.txt", "r").read()
 jayden_list = list()
 harris_list = list()
@@ -16,7 +16,7 @@ async def cum(ctx, args=1):
     emoji = bot.get_emoji(702822392371740684)
     if int(args) <= 50:
         await ctx.send(str(emoji) * args)
-    await discord.Message.delete(ctx.message)
+    # await discord.Message.delete(ctx.message)
 
 
 @bot.command()
@@ -164,7 +164,7 @@ async def slut_txt(file_name, slut_to_add):
 async def change_status():
     await bot.wait_until_ready()
     statuses = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
-                      'Harris is .cum master', '.mms', '.slut'])
+                      'Harris is .cum master', '.mms', '.slut', 'with Airfried Meatpies'])
     while not bot.is_closed():
         status = next(statuses)
         await bot.change_presence(activity=discord.Game(status))
@@ -225,9 +225,9 @@ async def change_jayden():
         await dickheadarray()
         i = 0
         while i < len(jayden_list):
+            await asyncio.sleep(86400)
             # print(f"Jayden's current nickname is: {jayden_list[i]}.")
             await change_nick(jayden_name, jayden_list[i])
-            await asyncio.sleep(86400)
             i += 1
 
 
