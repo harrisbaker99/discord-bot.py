@@ -5,7 +5,7 @@ from itertools import cycle
 import asyncio
 import os
 
-bot = commands.Bot(command_prefix="** **")
+bot = commands.Bot(command_prefix=".")
 token = open("token.txt", "r").read()
 jayden_list = list()
 harris_list = list()
