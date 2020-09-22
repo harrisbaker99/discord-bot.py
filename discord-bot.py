@@ -14,37 +14,55 @@ harris_list = list()
 @bot.command()
 async def cum(ctx, args=1):
     emoji = bot.get_emoji(702822392371740684)
-    if int(args) <= 50:
-        await ctx.send(str(emoji) * args)
-    # await discord.Message.delete(ctx.message)
+    daniel_id = bot.get_user(230854079847464960)
+    user = ctx.message.author
+    # print(user)
+    if user == daniel_id:
+        await ctx.send('Get fucked dickhead')
+    else:
+        if int(args) <= 50:
+            await ctx.send(str(emoji) * args)
+        # await discord.Message.delete(ctx.message)
 
 
 @bot.command()
 async def mms(ctx, args=0):
-    if int(args) <= 10:
-        mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
-        await ctx.send(file=discord.File(mms_img))
-    await discord.Message.delete(ctx.message)
+    daniel_id = bot.get_user(230854079847464960)
+    user = ctx.message.author
+    # print(user)
+    if user == daniel_id:
+        await ctx.send('Get fucked dickhead')
+    else:
+        if int(args) <= 10:
+            mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
+            await ctx.send(file=discord.File(mms_img))
+        await discord.Message.delete(ctx.message)
 
 
 @bot.command()
 async def CUM(ctx):
-    cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
-    channel = ctx.message.author.voice.channel
-    voice = get(bot.voice_clients, guild=ctx.guild)
-
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
+    daniel_id = bot.get_user(230854079847464960)
+    user = ctx.message.author
+    # print(user)
+    if user == daniel_id:
+        await ctx.send('Get fucked dickhead')
     else:
-        voice = await channel.connect()
+        cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
+        channel = ctx.message.author.voice.channel
+        voice = get(bot.voice_clients, guild=ctx.guild)
 
-    voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
-    voice.source = discord.PCMVolumeTransformer(voice.source)
-    voice.source.volume = 0.2
-    await asyncio.sleep(7)
-    voice.stop()
-    await voice.disconnect()
-    await discord.Message.delete(ctx.message)
+        if voice and voice.is_connected():
+            await voice.move_to(channel)
+        else:
+            voice = await channel.connect()
+
+        voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+        voice.source = discord.PCMVolumeTransformer(voice.source)
+        voice.source.volume = 0.2
+        await asyncio.sleep(7)
+        voice.stop()
+        await voice.disconnect()
+        await discord.Message.delete(ctx.message)
 
 
 @bot.command()
