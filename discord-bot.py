@@ -12,18 +12,23 @@ harris_list = list()
 
 
 @bot.command()
-async def cum(ctx, args=1):
+async def cum(ctx, args=None):
     emoji = bot.get_emoji(702822392371740684)
-    user = ctx.message.author
-    # print(user)
-    if int(args) <= 50:
-        await ctx.send(str(emoji) * args)
-        await discord.Message.delete(ctx.message)
-    elif int(args) > 50:
-        await ctx.send('Try something below 50 fucktard.')
-        await discord.Message.delete(ctx.message)
-    else:
-        await ctx.send('Idk wtf you have done, but stop. Fr, stop')
+    print(args)
+
+    try:
+        # if isinstance(args, str):
+        if args is None:
+            await ctx.send(str(emoji) * 1)
+            await discord.Message.delete(ctx.message)
+        elif int(args) <= 50:
+            await ctx.send(str(emoji) * int(args))
+            await discord.Message.delete(ctx.message)
+        elif int(args) > 50:
+            await ctx.send('Try something below 50 fucktard.')
+            await discord.Message.delete(ctx.message)
+    except ValueError:
+        await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
 
 @bot.command()
@@ -55,7 +60,7 @@ async def CUM(ctx, args=7):
     else:
         voice = await channel.connect()
 
-    if int(args) < 7:
+    if int(args) <= 7:
         voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 0.2
@@ -63,11 +68,12 @@ async def CUM(ctx, args=7):
         voice.stop()
         await voice.disconnect()
         await discord.Message.delete(ctx.message)
-    elif int(args) > 10:
+    elif int(args) > 7:
         await ctx.send("Stop, 7")
         await discord.Message.delete(ctx.message)
     else:
         await ctx.send('Idk wtf you have done, but stop. Fr, my vocal chords are sore. Give me a break.')
+        await voice.disconnect()
 
 
 @bot.command()
