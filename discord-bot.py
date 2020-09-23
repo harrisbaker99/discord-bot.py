@@ -14,55 +14,60 @@ harris_list = list()
 @bot.command()
 async def cum(ctx, args=1):
     emoji = bot.get_emoji(702822392371740684)
-    daniel_id = bot.get_user(230854079847464960)
     user = ctx.message.author
     # print(user)
-    if user == daniel_id:
-        await ctx.send('Get fucked dickhead')
+    if int(args) <= 50:
+        await ctx.send(str(emoji) * args)
+        await discord.Message.delete(ctx.message)
+    elif int(args) > 50:
+        await ctx.send('Try something below 50 fucktard.')
+        await discord.Message.delete(ctx.message)
     else:
-        if int(args) <= 50:
-            await ctx.send(str(emoji) * args)
-        # await discord.Message.delete(ctx.message)
+        await ctx.send('Idk wtf you have done, but stop. Fr, stop')
 
 
 @bot.command()
 async def mms(ctx, args=0):
-    daniel_id = bot.get_user(230854079847464960)
     user = ctx.message.author
     # print(user)
-    if user == daniel_id:
-        await ctx.send('Get fucked dickhead')
-    else:
-        if int(args) <= 10:
-            mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
-            await ctx.send(file=discord.File(mms_img))
+    if int(args) <= 10:
+        mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
+        await ctx.send(file=discord.File(mms_img))
         await discord.Message.delete(ctx.message)
+    elif int(args) > 10:
+        await ctx.send("Bruh, you are a mingepot aren't ya")
+        await discord.Message.delete(ctx.message)
+    else:
+        await ctx.send('Idk wtf you have done, but stop. Fr, stop')
 
 
 @bot.command()
-async def CUM(ctx):
+async def CUM(ctx, args=7):
     daniel_id = bot.get_user(230854079847464960)
     user = ctx.message.author
-    # print(user)
-    if user == daniel_id:
-        await ctx.send('Get fucked dickhead')
+
+    cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
+    channel = ctx.message.author.voice.channel
+    voice = get(bot.voice_clients, guild=ctx.guild)
+
+    if voice and voice.is_connected():
+        await voice.move_to(channel)
     else:
-        cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
-        channel = ctx.message.author.voice.channel
-        voice = get(bot.voice_clients, guild=ctx.guild)
+        voice = await channel.connect()
 
-        if voice and voice.is_connected():
-            await voice.move_to(channel)
-        else:
-            voice = await channel.connect()
-
+    if int(args) < 7:
         voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
         voice.source = discord.PCMVolumeTransformer(voice.source)
         voice.source.volume = 0.2
-        await asyncio.sleep(7)
+        await asyncio.sleep(int(args))
         voice.stop()
         await voice.disconnect()
         await discord.Message.delete(ctx.message)
+    elif int(args) > 10:
+        await ctx.send("Stop, 7")
+        await discord.Message.delete(ctx.message)
+    else:
+        await ctx.send('Idk wtf you have done, but stop. Fr, my vocal chords are sore. Give me a break.')
 
 
 @bot.command()
