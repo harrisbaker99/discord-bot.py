@@ -14,7 +14,6 @@ harris_list = list()
 @bot.command()
 async def cum(ctx, args=None):
     emoji = bot.get_emoji(702822392371740684)
-    print(args)
 
     try:
         # if isinstance(args, str):
@@ -32,48 +31,62 @@ async def cum(ctx, args=None):
 
 
 @bot.command()
-async def mms(ctx, args=0):
-    user = ctx.message.author
-    # print(user)
-    if int(args) <= 10:
-        mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
-        await ctx.send(file=discord.File(mms_img))
-        await discord.Message.delete(ctx.message)
-    elif int(args) > 10:
-        await ctx.send("Bruh, you are a mingepot aren't ya")
-        await discord.Message.delete(ctx.message)
-    else:
-        await ctx.send('Idk wtf you have done, but stop. Fr, stop')
+async def mms(ctx, args=None):
+    try:
+        if args is None:
+            mms_img = os.path.abspath('.//mms/mms0.png')
+            await ctx.send(file=discord.File(mms_img))
+            await discord.Message.delete(ctx.message)
+        if int(args) <= 10:
+            mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
+            await ctx.send(file=discord.File(mms_img))
+            await discord.Message.delete(ctx.message)
+        elif int(args) > 10:
+            await ctx.send("You seem to be just a tad minged, this is the best i can do sport.")
+            mms_img = os.path.abspath('.//mms/mms10.png')
+            await ctx.send(file=discord.File(mms_img))
+            await discord.Message.delete(ctx.message)
+    except ValueError:
+        await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
 
 @bot.command()
-async def CUM(ctx, args=7):
-    daniel_id = bot.get_user(230854079847464960)
-    user = ctx.message.author
-
+async def CUM(ctx, args=None):
     cumcumcum = os.path.abspath('.//SoundEffects//cumcumcum.mp3')
     channel = ctx.message.author.voice.channel
     voice = get(bot.voice_clients, guild=ctx.guild)
 
-    if voice and voice.is_connected():
-        await voice.move_to(channel)
-    else:
-        voice = await channel.connect()
-
-    if int(args) <= 7:
-        voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
-        voice.source = discord.PCMVolumeTransformer(voice.source)
-        voice.source.volume = 0.2
-        await asyncio.sleep(int(args))
-        voice.stop()
-        await voice.disconnect()
-        await discord.Message.delete(ctx.message)
-    elif int(args) > 7:
-        await ctx.send("Stop, 7")
-        await discord.Message.delete(ctx.message)
-    else:
-        await ctx.send('Idk wtf you have done, but stop. Fr, my vocal chords are sore. Give me a break.')
-        await voice.disconnect()
+    try:
+        if args is None:
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+            else:
+                voice = await channel.connect()
+            voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+            voice.source = discord.PCMVolumeTransformer(voice.source)
+            voice.source.volume = 0.2
+            await asyncio.sleep(int(7))
+            voice.stop()
+            await voice.disconnect()
+            await discord.Message.delete(ctx.message)
+        elif int(args) <= 7:
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+            else:
+                voice = await channel.connect()
+            voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+            voice.source = discord.PCMVolumeTransformer(voice.source)
+            voice.source.volume = 0.2
+            await asyncio.sleep(int(args))
+            voice.stop()
+            await voice.disconnect()
+            await discord.Message.delete(ctx.message)
+        elif int(args) > 7:
+            await ctx.send(f"Look, my throat would be sorer than harris on a friday night if i cummed for {args}"
+                           f" seconds. Try something less than 7 dickhead.")
+            await discord.Message.delete(ctx.message)
+    except ValueError:
+        await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
 
 @bot.command()
