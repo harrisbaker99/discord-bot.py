@@ -14,20 +14,16 @@ harris_list = list()
 @bot.command()
 async def cum(ctx, args=None):
     emoji = bot.get_emoji(702822392371740684)
-
     try:
-        # if isinstance(args, str):
         if args is None:
             await ctx.send(str(emoji) * 1)
-            await discord.Message.delete(ctx.message)
         elif int(args) <= 50:
             await ctx.send(str(emoji) * int(args))
-            await discord.Message.delete(ctx.message)
         elif int(args) > 50:
             await ctx.send('Try something below 50 fucktard.')
-            await discord.Message.delete(ctx.message)
     except ValueError:
-        await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
+        await ctx.send(f"My balls are only of limited size, to produce '{args}' cummies, i would need to consult with"
+                       f"harris to learn how to cum that much.")
 
 
 @bot.command()
@@ -36,16 +32,13 @@ async def mms(ctx, args=None):
         if args is None:
             mms_img = os.path.abspath('.//mms/mms0.png')
             await ctx.send(file=discord.File(mms_img))
-            await discord.Message.delete(ctx.message)
         if int(args) <= 10:
             mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
             await ctx.send(file=discord.File(mms_img))
-            await discord.Message.delete(ctx.message)
         elif int(args) > 10:
             await ctx.send("You seem to be just a tad minged, this is the best i can do sport.")
             mms_img = os.path.abspath('.//mms/mms10.png')
             await ctx.send(file=discord.File(mms_img))
-            await discord.Message.delete(ctx.message)
     except ValueError:
         await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
