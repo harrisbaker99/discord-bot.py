@@ -20,10 +20,10 @@ async def cum(ctx, args=None):
         elif int(args) <= 50:
             await ctx.send(str(emoji) * int(args))
         elif int(args) > 50:
-            await ctx.send('Try something below 50 fucktard.')
+            await ctx.send(f"My balls are only of limited size, to produce '{args}' cummies, i would need to consult"
+                           f" with harris to learn how to cum that much.")
     except ValueError:
-        await ctx.send(f"My balls are only of limited size, to produce '{args}' cummies, i would need to consult with"
-                       f"harris to learn how to cum that much.")
+        await ctx.send(f"Want to try a number next time bucko.")
 
 
 @bot.command()
