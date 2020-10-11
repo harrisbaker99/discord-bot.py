@@ -54,6 +54,7 @@ class Help(commands.Cog):
 
             helpEmbed.add_field(name=cog, value=commandList, inline=False)
 
+        await discord.Message.delete(ctx.message)
         await ctx.author.send(embed=helpEmbed)
 
 
