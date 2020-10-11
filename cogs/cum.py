@@ -1,11 +1,12 @@
 import discord
 from discord.utils import get
 from discord.ext import commands
+import platform
 import asyncio
 import os
 
 
-class Misc(commands.Cog):
+class Misc_Commands(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -66,6 +67,31 @@ class Misc(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
+    @commands.command()
+    async def stats(self, ctx):
+        """
+        A usefull command that displays bot statistics.
+        """
+        pythonVersion = platform.python_version()
+        dpyVersion = discord.__version__
+        serverCount = len(self.client.guilds)
+        memberCount = len(set(self.client.get_all_members()))
+
+        embed = discord.Embed(title=f'{self.client.user.name} Stats', description='\uFEFF', colour=ctx.author.colour,
+                              timestamp=ctx.message.created_at)
+
+        embed.add_field(name='Bot Version:', value=self.client.version)
+        embed.add_field(name='Python Version:', value=pythonVersion)
+        embed.add_field(name='Discord.Py Version', value=dpyVersion)
+        embed.add_field(name='Total Guilds:', value=str(serverCount))
+        embed.add_field(name='Total Users:', value=str(memberCount))
+        embed.add_field(name='Bot Developers:', value="<@230854079847464960>")
+
+        embed.set_footer(text=f"AHHHHHHHHHHHHH | {self.client.user.name}")
+        embed.set_author(name=self.client.user.name, icon_url=self.client.user.avatar_url)
+
+        await ctx.send(embed=embed)
+
 
 def setup(client):
-    client.add_cog(Misc(client))
+    client.add_cog(Misc_Commands(client))

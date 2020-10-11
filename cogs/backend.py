@@ -10,41 +10,44 @@ status = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ry
                 'Harris is .cum master', '.mms', '.slut', 'with Airfried Meatpies'])
 
 
+async def dickheadarray():
+    filesize = os.path.getsize('jlist.txt')
+    del jayden_list[:]
+    if filesize == 0:
+        print(f"The jlist text file is empty.")
+    else:
+        f = open('jlist.txt')
+        for line in f:
+            jayden_list.append(line)
+        f.close()
+
+
+async def change_nick(member: discord.Member, nick):
+    await member.edit(nick=nick)
+
+
+async def harrisarray():
+    filesize = os.path.getsize('hlist.txt')
+    del harris_list[:]
+    if filesize == 0:
+        print(f"The jlist text file is empty.")
+    else:
+        f = open('hlist.txt')
+        for line in f:
+            # print(line)
+            harris_list.append(line)
+        f.close()
+
+
 class backend(commands.Cog):
     def __init__(self, client):
         self.client = client
         self.change_status.start()
 
+    # Cog On Ready
     @commands.Cog.listener()
     async def on_ready(self):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
-
-    async def change_nick(self, member: discord.Member, nick):
-        await member.edit(nick=nick)
-
-    async def dickheadarray(self):
-        filesize = os.path.getsize('jlist.txt')
-        del jayden_list[:]
-        if filesize == 0:
-            print(f"The jlist text file is empty.")
-        else:
-            f = open('jlist.txt')
-            for line in f:
-                # print(line)
-                jayden_list.append(line)
-            f.close()
-
-    async def harrisarray(self):
-        filesize = os.path.getsize('hlist.txt')
-        del harris_list[:]
-        if filesize == 0:
-            print(f"The jlist text file is empty.")
-        else:
-            f = open('hlist.txt')
-            for line in f:
-                # print(line)
-                harris_list.append(line)
-            f.close()
 
     # Tasks
     @tasks.loop(seconds=10.0)
@@ -66,10 +69,10 @@ class backend(commands.Cog):
                     jayden_name = member
 
         while not self.client.is_closed():
-            await self.dickheadarray()
+            await dickheadarray()
             i = 0
             while i < len(jayden_list):
-                await self.change_nick(jayden_name, jayden_list[i])
+                await change_nick(jayden_name, jayden_list[i])
                 i += 1
 
     @tasks.loop(hours=4)
@@ -85,12 +88,13 @@ class backend(commands.Cog):
                         harris_name = member
 
         while not self.client.is_closed():
-            await self.harrisarray()
+            await harrisarray()
             i = 0
             while i < len(harris_list):
-                await self.change_nick(harris_name, harris_list[i])
+                await change_nick(harris_name, harris_list[i])
                 i += 1
 
+    # Before Loops for changing nicknames, waiting for the bot to become online first
     @change_jayden.before_loop
     async def before_change_jayden(self):
         await asyncio.sleep(86400)

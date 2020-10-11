@@ -1,16 +1,14 @@
-import discord
 from discord.ext import commands
-import asyncio
 import os
 
 
-async def slut_txt(file_name, slut_to_add):
+async def add_txt(file_name, txt_to_add):
     with open(file_name, 'a+') as file_object:
         file_object.seek(0)
         data = file_object.read(100)
         if len(data) > 0:
             file_object.write("\n")
-        file_object.write(str(slut_to_add))
+        file_object.write(str(txt_to_add))
 
 
 class Jayden(commands.Cog):
@@ -48,7 +46,7 @@ class Jayden(commands.Cog):
                 if str(bigargs) in f.read():
                     await ctx.send(str(bigargs) + " is already in the dickhead list.")
                 else:
-                    await slut_txt('jlist.txt', str(bigargs))
+                    await add_txt('jlist.txt', str(bigargs))
                     await ctx.send(str(bigargs) + " was added to the dickheads list.")
 
 

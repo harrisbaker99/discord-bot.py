@@ -3,7 +3,7 @@ from discord.ext import commands
 import os
 
 
-class MMS(commands.Cog):
+class MMS_Command(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -29,4 +29,4 @@ class MMS(commands.Cog):
 
 
 def setup(client):
-    client.add_cog(MMS(client))
+    client.add_cog(MMS_Command(client))

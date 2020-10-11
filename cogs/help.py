@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 
-class Help(commands.Cog):
+class Help_Command(commands.Cog):
     def __init__(self, client):
         self.client = client
 
@@ -54,9 +54,8 @@ class Help(commands.Cog):
 
             helpEmbed.add_field(name=cog, value=commandList, inline=False)
 
-        await discord.Message.delete(ctx.message)
-        await ctx.author.send(embed=helpEmbed)
+        await ctx.send(embed=helpEmbed)
 
 
 def setup(client):
-    client.add_cog(Help(client))
+    client.add_cog(Help_Command(client))
