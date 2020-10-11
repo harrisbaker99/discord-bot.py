@@ -67,7 +67,7 @@ class Misc_Commands(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
 
-    @commands.command()
+    @commands.command(name='stats', aliases=['Stats', 'stat'], description='Provide stats about the bot')
     async def stats(self, ctx):
         """
         A usefull command that displays bot statistics.
