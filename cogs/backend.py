@@ -10,7 +10,7 @@ import os
 jayden_list = list()
 harris_list = list()
 status = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
-                'Harris is .cum master', '.mms', '.slut', 'with Airfried Meatpies'])
+                'Harris is .cum master', '.mms', '.slut', 'with Airfried Meatpies', 'yourmumisgay.com'])
 
 
 async def dickheadarray():
