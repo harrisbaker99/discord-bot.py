@@ -1,5 +1,5 @@
 import math
-
+import random
 import discord
 from discord.ext import commands
 
@@ -14,7 +14,7 @@ class Help_Command(commands.Cog):
 
     @commands.command(name='help', aliases=['h', 'commands'], description='The help command')
     async def help(self, ctx, cog='1'):
-        helpEmbed = discord.Embed(title='Help Commands')
+        helpEmbed = discord.Embed(title='Help Commands', color=random.choice(self.client.colour_list))
         helpEmbed.set_thumbnail(url=self.client.user.avatar_url)
 
         cogs = [c for c in self.client.cogs.keys()]
