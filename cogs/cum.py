@@ -31,10 +31,9 @@ class Misc_Commands(commands.Cog):
 
     @commands.command(name='CUM', aliases=['C'], description='The loud in ear cum command')
     async def CUM(self, ctx, args=None):
-        cumcumcum = os.path.abspath('./../discord-bot/SoundEffects/cumcumcum.mp3')
+        cumcumcum = os.path.abspath('./SoundEffects/cumcumcum.mp3')
         channel = ctx.message.author.voice.channel
         voice = get(self.client.voice_clients, guild=ctx.guild)
-
         try:
             if args is None:
                 if voice and voice.is_connected():
