@@ -9,8 +9,7 @@ import os
 
 jayden_list = list()
 harris_list = list()
-status = cycle(['Fuck my ass', 'Jayden sucks cock', 'Daniel is gay', '.cum', 'Ryiab smells',
-                'Harris is .cum master', '.mms', '.slut', 'with Airfried Meatpies', 'yourmumisgay.com'])
+status = cycle(['.cum', 'Jayden Sucks Cock', '.mms', '.help', 'yourmumisgay.com'])
 
 
 async def dickheadarray():
@@ -37,7 +36,6 @@ async def harrisarray():
     else:
         f = open('hlist.txt')
         for line in f:
-            # print(line)
             harris_list.append(line)
         f.close()
 
@@ -55,7 +53,7 @@ class backend(commands.Cog):
     # Tasks
     @tasks.loop(seconds=10.0)
     async def change_status(self):
-        await self.client.change_presence(activity=discord.Game(next(status)))
+        await self.client.change_presence(activity=discord.Game(next(status)), status='dnd')
 
     @change_status.before_loop
     async def before_change_status(self):
@@ -106,7 +104,7 @@ class backend(commands.Cog):
     async def before_change_harris(self):
         await asyncio.sleep(14400)
 
-    @commands.command(name='reload', description='Reaload all/one of the bots cogs!')
+    @commands.command(name='reload', description='Reload all/one of the bots cogs!')
     @commands.is_owner()
     async def reload(self, ctx, cog=None):
         if not cog:
