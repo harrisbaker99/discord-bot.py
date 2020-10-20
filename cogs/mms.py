@@ -11,7 +11,7 @@ class MMS_Command(commands.Cog):
     async def on_ready(self):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
 
-    @commands.command(name='mms', aliases=['MMS'], description='The martin minged scale command')
+    @commands.command(name='mms', aliases=['MMS'], description='The martin minge scale command')
     async def mms(self, ctx, args=None):
         try:
             if args is None:
@@ -20,12 +20,17 @@ class MMS_Command(commands.Cog):
             if int(args) <= 10:
                 mms_img = os.path.abspath('.//mms/mms' + str(args) + '.png')
                 await ctx.send(file=discord.File(mms_img))
-            elif int(args) > 10:
+            elif 10 < int(args) <= 100:
                 await ctx.send("You seem to be just a tad minged, this is the best i can do sport.")
                 mms_img = os.path.abspath('.//mms/mms10.png')
                 await ctx.send(file=discord.File(mms_img))
+            elif int(args) > 100:
+                await ctx.send("Holy fuck, you sir, are quite minged. I don't have a scale that goes that high, "
+                               "have this instead champ.")
+                mms_img = os.path.abspath('.//mms/mms10.png')
+                await ctx.send(file=discord.File(mms_img))
         except ValueError:
-            await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
+            await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
 
 
 def setup(client):
