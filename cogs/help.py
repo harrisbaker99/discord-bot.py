@@ -18,7 +18,6 @@ class Help_Command(commands.Cog):
         helpEmbed.set_thumbnail(url=self.client.user.avatar_url)
 
         cogs = [c for c in self.client.cogs.keys()]
-        cogs.remove('backend')
         cogs.remove('Jayden')
 
         totalPages = math.ceil(len(cogs) / 4)

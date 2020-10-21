@@ -167,6 +167,11 @@ class backend(commands.Cog):
                         )
             await ctx.send(embed=embed)
 
+    @reload.error
+    async def reload_error(self, ctx, error):
+        if isinstance(error, commands.NotOwner):
+            await ctx.send("You don't own the bot boss man.")
+
 
 def setup(client):
     client.add_cog(backend(client))
