@@ -22,7 +22,22 @@ class Misc_Commands(commands.Cog):
                 await ctx.send(str(emoji) * 1)
             elif int(args) <= 50:
                 await ctx.send(str(emoji) * int(args))
-            elif int(args) > 50:
+            elif int(args) == 69:
+                await ctx.send(
+                    f"Nice\n                                          "
+                    f"{str(emoji)}\n                                    "
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}\n                              "
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}\n                        "
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                    f"\n                  {str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                    f"{str(emoji)}{str(emoji)}\n            {str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}\n"
+                    f"      {str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}\n"
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                    f"{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}{str(emoji)}"
+                )
+            elif int(args) > 50 & int(args) != 69:
                 await ctx.send(
                     f"My balls are only of limited size, to produce '{args}' cummies, i would need to consult"
                     f" with harris to learn how to cum that much.")
@@ -64,12 +79,12 @@ class Misc_Commands(commands.Cog):
                                f" seconds. Try something less than 7 dickhead.")
                 await discord.Message.delete(ctx.message)
         except ValueError:
-            await ctx.send(f"You seem a bit slow in the head beacuse '{args}' is not a number.")
+            await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
 
     @commands.command(name='stats', aliases=['Stats', 'stat'], description='Provide stats about the bot')
     async def stats(self, ctx):
         """
-        A usefull command that displays bot statistics.
+        A useful command that displays bot statistics.
         """
         pythonVersion = platform.python_version()
         dpyVersion = discord.__version__
