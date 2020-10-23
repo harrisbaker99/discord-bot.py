@@ -83,7 +83,7 @@ class Misc_Commands(commands.Cog):
             await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
 
     @commands.command(name='moan', aliases=['m'], description='The loud in ear moan command')
-    async def CUM(self, ctx, args=None):
+    async def moan(self, ctx, args=None):
         cumcumcum = os.path.abspath('./SoundEffects/moan.mp3')
         channel = ctx.message.author.voice.channel
         voice = get(self.client.voice_clients, guild=ctx.guild)
