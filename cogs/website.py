@@ -21,6 +21,15 @@ class website(commands.Cog):
         await ctx.send(file=discord.File(website_img))
         await ctx.send('https://yourmumisgay.com')
 
+    @commands.command(
+        name='faggot',
+        aliases=['fag', 'DSL', 'dsl', 'FAG', 'Faggot'],
+        description='Display a picture of the DSL faggot'
+    )
+    async def website(self, ctx):
+        website_img = os.path.abspath('./images/faggot.jpg')
+        await ctx.send(file=discord.File(website_img))
+
 
 def setup(client):
     client.add_cog(website(client))
