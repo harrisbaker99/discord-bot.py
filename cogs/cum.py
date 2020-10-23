@@ -82,6 +82,43 @@ class Misc_Commands(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
 
+    @commands.command(name='moan', aliases=['m'], description='The loud in ear moan command')
+    async def CUM(self, ctx, args=None):
+        cumcumcum = os.path.abspath('./SoundEffects/moan.mp3')
+        channel = ctx.message.author.voice.channel
+        voice = get(self.client.voice_clients, guild=ctx.guild)
+        try:
+            if args is None:
+                if voice and voice.is_connected():
+                    await voice.move_to(channel)
+                else:
+                    voice = await channel.connect()
+                voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+                voice.source = discord.PCMVolumeTransformer(voice.source)
+                voice.source.volume = 0.2
+                await asyncio.sleep(int(3))
+                voice.stop()
+                await voice.disconnect()
+                await discord.Message.delete(ctx.message)
+            elif int(args) <= 3:
+                if voice and voice.is_connected():
+                    await voice.move_to(channel)
+                else:
+                    voice = await channel.connect()
+                voice.play(discord.FFmpegPCMAudio(cumcumcum), after=lambda: print(f"Playing {cumcumcum}"))
+                voice.source = discord.PCMVolumeTransformer(voice.source)
+                voice.source.volume = 0.2
+                await asyncio.sleep(int(args))
+                voice.stop()
+                await voice.disconnect()
+                await discord.Message.delete(ctx.message)
+            elif int(args) > 3:
+                await ctx.send(f"Look, my throat would be sorer than harris on a friday night if i moaned for {args}"
+                               f" seconds. Try something less than 7 dickhead.")
+                await discord.Message.delete(ctx.message)
+        except ValueError:
+            await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
+
     @commands.command(name='stats', aliases=['Stats', 'stat'], description='Provide stats about the bot')
     async def stats(self, ctx):
         """
