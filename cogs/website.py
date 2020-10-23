@@ -26,8 +26,17 @@ class website(commands.Cog):
         aliases=['fag', 'DSL', 'dsl', 'FAG', 'Faggot'],
         description='Display a picture of the DSL faggot'
     )
-    async def website(self, ctx):
+    async def faggot(self, ctx):
         website_img = os.path.abspath('./images/faggot.jpg')
+        await ctx.send(file=discord.File(website_img))
+
+    @commands.command(
+        name='jayden',
+        aliases=['gayden', 'gay'],
+        description='Display a picture of gayden sucking some cock'
+    )
+    async def jayden(self, ctx):
+        website_img = os.path.abspath('./images/jaydengay.png')
         await ctx.send(file=discord.File(website_img))
 
 
