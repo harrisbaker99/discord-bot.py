@@ -1,5 +1,4 @@
 import traceback
-
 import discord
 from discord.ext import commands, tasks
 from itertools import cycle
@@ -51,7 +50,7 @@ class backend(commands.Cog):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
 
     # Tasks
-    @tasks.loop(seconds=10.0)
+    @tasks.loop(seconds=10)
     async def change_status(self):
         await self.client.change_presence(activity=discord.Game(next(status)), status='dnd')
 
@@ -68,13 +67,12 @@ class backend(commands.Cog):
             for member in guild.members:
                 if member == jayden_id:
                     jayden_name = member
-
-        while not self.client.is_closed():
-            await dickheadarray()
-            i = 0
-            while i < len(jayden_list):
-                await change_nick(jayden_name, jayden_list[i])
-                i += 1
+                    while not self.client.is_closed():
+                        await dickheadarray()
+                        i = 0
+                        while i < len(jayden_list):
+                            await change_nick(jayden_name, jayden_list[i])
+                            i += 1
 
     @tasks.loop(hours=4)
     async def change_harris(self):
@@ -87,22 +85,22 @@ class backend(commands.Cog):
                 for member in guild.members:
                     if member == harris_id:
                         harris_name = member
-
-        while not self.client.is_closed():
-            await harrisarray()
-            i = 0
-            while i < len(harris_list):
-                await change_nick(harris_name, harris_list[i])
-                i += 1
+                        while not self.client.is_closed():
+                            await harrisarray()
+                            i = 0
+                            while i < len(harris_list):
+                                await change_nick(harris_name, harris_list[i])
+                                i += 1
 
     # Before Loops for changing nicknames, waiting for the bot to become online first
-    @change_jayden.before_loop
+    ''''@change_jayden.before_loop
     async def before_change_jayden(self):
         await asyncio.sleep(86400)
 
     @change_harris.before_loop
     async def before_change_harris(self):
         await asyncio.sleep(14400)
+    '''
 
     @commands.command(name='reload', description='Reload all/one of the bots cogs!')
     @commands.is_owner()

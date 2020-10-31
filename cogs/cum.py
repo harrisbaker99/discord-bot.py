@@ -4,6 +4,7 @@ from discord.ext import commands
 import platform
 import asyncio
 import os
+import random
 
 
 class Misc_Commands(commands.Cog):
@@ -129,7 +130,8 @@ class Misc_Commands(commands.Cog):
         serverCount = len(self.client.guilds)
         memberCount = len(set(self.client.get_all_members()))
 
-        embed = discord.Embed(title=f'{self.client.user.name} Stats', description='\uFEFF', colour=ctx.author.colour,
+        embed = discord.Embed(title=f'{self.client.user.name} Stats', description='\uFEFF',
+                              color=random.choice(self.client.colour_list),
                               timestamp=ctx.message.created_at)
 
         embed.add_field(name='Bot Version:', value=self.client.version)
