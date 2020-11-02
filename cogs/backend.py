@@ -42,21 +42,17 @@ async def harrisarray():
 class backend(commands.Cog):
     def __init__(self, client):
         self.client = client
-        self.change_status.start()
 
     # Cog On Ready
     @commands.Cog.listener()
     async def on_ready(self):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
+        self.change_status.start()
 
     # Tasks
-    @tasks.loop(seconds=10)
+    @tasks.loop(seconds=5)
     async def change_status(self):
         await self.client.change_presence(activity=discord.Game(next(status)), status='dnd')
-
-    @change_status.before_loop
-    async def before_change_status(self):
-        await self.client.wait_until_ready()
 
     @tasks.loop(hours=24)
     async def change_jayden(self):

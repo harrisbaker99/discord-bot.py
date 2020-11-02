@@ -12,9 +12,8 @@ client = commands.Bot(command_prefix=".", owner_id=230854079847464960, help_comm
 secret_file = json.load(open(cwd + '/bot_config/secret.json'))
 client.config_token = secret_file['token']
 client.cwd = cwd
-
+client.colour_list = [c for c in client.colours.values()]
 client.version = '7'
-
 client.colours = {
     'WHITE': 0xFFFFFF,
     'AQUA': 0x1ABC9C,
@@ -36,7 +35,6 @@ client.colours = {
     'DARK_RED': 0x992D22,
     'DARK_NAVY': 0x2C3E50
 }
-client.colour_list = [c for c in client.colours.values()]
 
 
 @client.command()
