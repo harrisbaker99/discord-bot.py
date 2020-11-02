@@ -8,7 +8,7 @@ import os
 
 jayden_list = list()
 harris_list = list()
-status = cycle(['Jayden Sucks Cock', '.help', 'yourmumisgay.com'])
+status = cycle(['Jayden sucking cock', '.help', 'yourmumisgay.com'])
 
 
 async def dickheadarray():
@@ -52,7 +52,10 @@ class backend(commands.Cog):
     # Tasks
     @tasks.loop(seconds=5)
     async def change_status(self):
-        await self.client.change_presence(activity=discord.Game(next(status)), status='dnd')
+        await self.client.change_presence(
+            activity=discord.Activity(type=discord.ActivityType.listening,
+                                      name=(next(status)),
+                                      status='dnd'))
 
     @tasks.loop(hours=24)
     async def change_jayden(self):
