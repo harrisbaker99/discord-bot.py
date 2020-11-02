@@ -8,7 +8,7 @@ import os
 
 jayden_list = list()
 harris_list = list()
-status = cycle(['.cum', 'Jayden Sucks Cock', '.mms', '.help', 'yourmumisgay.com'])
+status = cycle(['Jayden Sucks Cock', '.help', 'yourmumisgay.com'])
 
 
 async def dickheadarray():
