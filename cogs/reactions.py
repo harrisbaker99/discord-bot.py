@@ -57,7 +57,7 @@ class reactions(commands.Cog):
 
         message = await ctx.send(embed=embed)
 
-        for emoji in numbers[:len(options)]:
+        for emoji in yes_no[:len(options)]:
             await message.add_reaction(emoji)
 
         self.polls.append((message.channel.id, message.id))
