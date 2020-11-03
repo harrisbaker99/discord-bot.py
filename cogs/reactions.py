@@ -17,7 +17,7 @@ class reactions(commands.Cog):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
 
     @commands.command(name="createpoll", aliases=["mkpoll", "poll"])
-    async def create_poll(self, ctx, hours: int, question: str, *options):
+    async def create_poll(self, ctx, question: str, *options):
         if len(options) > 10:
             await ctx.send("You can only supply a maximum of 10 options")
         else:
