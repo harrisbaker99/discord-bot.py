@@ -39,15 +39,28 @@ class reactions(commands.Cog):
 
             self.polls.append((message.channel.id, message.id))
 
-    async def complete_poll(self, channel_id, message_id):
-        message = await self.client.get_channel(channel_id).fetch_message(message_id)
+    @commands.command(name="letsgoing", aliases=["lg", "g"])
+    async def lets_going(self, ctx):
+        big_yes = self.client.get_emoji(773090431416139777)
+        big_no = self.client.get_emoji(773090453850423317)
+        options = ("Yes", "No")
+        yes_no = (big_yes, big_no)
+        embed = Embed(title="Lets Going?",
+                      description="Will you be available for a lets going?",
+                      colour=random.choice(self.client.colour_list),
+                      timestamp=datetime.utcnow())
 
-        most_voted = max(message.reactions, key=lambda r: r.count)
+        fields = [("Options", "\n".join([f"{yes_no[idx]} {option}" for idx, option in enumerate(options)]), False)]
 
-        await message.channel.send(
-            f"The results are in and option {most_voted.emoji} was the most,"
-            f" popular with {most_voted.count - 1:,} votes!")
-        self.polls.remove((message.channel.id, message.id))
+        for name, value, inline in fields:
+            embed.add_field(name=name, value=value, inline=inline)
+
+        message = await ctx.send(embed=embed)
+
+        for emoji in numbers[:len(options)]:
+            await message.add_reaction(emoji)
+
+        self.polls.append((message.channel.id, message.id))
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
