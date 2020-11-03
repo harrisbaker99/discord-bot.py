@@ -64,6 +64,8 @@ class reactions(commands.Cog):
 
         self.polls.append((message.channel.id, message.id))
 
+
+'''
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         if payload.message_id in (poll[1] for poll in self.polls):
@@ -74,6 +76,7 @@ class reactions(commands.Cog):
                         and payload.member in await reaction.users().flatten()
                         and reaction.emoji != payload.emoji.name):
                     await message.remove_reaction(reaction.emoji, payload.member)
+'''
 
 
 def setup(client):
