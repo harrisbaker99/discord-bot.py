@@ -55,7 +55,7 @@ class reactions(commands.Cog):
         for name, value, inline in fields:
             embed.add_field(name=name, value=value, inline=inline)
 
-        await ctx.send(self.client.mention('<&@749257590520807455>'))
+        await ctx.send(self.client.mentionRoleID('<@&749257590520807455>'))
 
         message = await ctx.send(embed=embed)
 
