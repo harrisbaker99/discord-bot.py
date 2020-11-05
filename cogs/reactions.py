@@ -57,13 +57,9 @@ class reactions(commands.Cog):
         for name, value, inline in fields:
             embed.add_field(name=name, value=value, inline=inline)
 
-        harris_id = self.client.get_user(230854079847464960)
-        daniel_id = self.client.get_user(194308223149277184)
-        brendan_id = self.client.get_user(373254637559480322)
-        jayden_id = self.client.get_user(142933221015945216)
-        ryan_id = self.client.get_user(366803453403463680)
+        lets_going = discord.utils.get(ctx.guild.roles, id=749257590520807455)
 
-        lets_going = ([harris_id, daniel_id, brendan_id, jayden_id, ryan_id])
+        await ctx.send(f'{lets_going.mention}')
 
         message = await ctx.send(embed=embed)
 
@@ -71,10 +67,6 @@ class reactions(commands.Cog):
             await message.add_reaction(emoji)
 
         self.polls.append((message.channel.id, message.id))
-
-        for c in lets_going:
-            member = await c.create_dm()
-            await member.send(f"{ctx.author.mention} has requested a lets going. Please respond to the poll.")
 
 
 '''
