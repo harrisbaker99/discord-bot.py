@@ -108,9 +108,9 @@ class SoundClips(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
 
-    @commands.command(name='cockslam', aliases=['cock', 'slam'], description='Fug ya mum')
-    async def cockslam(self, ctx, args=None):
-        audio = os.path.abspath('./SoundEffects/cockslamyamum.mp3')
+    @commands.command(name='cumslam', aliases=['slam'], description='Fug ya mum')
+    async def cumslam(self, ctx, args=None):
+        audio = os.path.abspath('./SoundEffects/cumslamyamum.mp3')
         channel = ctx.message.author.voice.channel
         voice = get(self.client.voice_clients, guild=ctx.guild)
         try:
