@@ -1,3 +1,4 @@
+import platform
 import traceback
 import discord
 from discord.ext import commands, tasks
@@ -168,6 +169,32 @@ class backend(commands.Cog):
     async def reload_error(self, ctx, error):
         if isinstance(error, commands.NotOwner):
             await ctx.send("You don't own the bot boss man.")
+
+    @commands.command(name='stats', aliases=['Stats', 'stat'], description='Provide stats about the bot')
+    async def stats(self, ctx):
+        """
+        A useful command that displays bot statistics.
+        """
+        pythonVersion = platform.python_version()
+        dpyVersion = discord.__version__
+        serverCount = len(self.client.guilds)
+        memberCount = len(set(self.client.get_all_members()))
+
+        embed = discord.Embed(title=f'{self.client.user.name} Stats', description='\uFEFF',
+                              color=random.choice(self.client.colour_list),
+                              timestamp=ctx.message.created_at)
+
+        embed.add_field(name='Bot Version:', value=self.client.version)
+        embed.add_field(name='Python Version:', value=pythonVersion)
+        embed.add_field(name='Discord.Py Version', value=dpyVersion)
+        embed.add_field(name='Total Guilds:', value=str(serverCount))
+        embed.add_field(name='Total Users:', value=str(memberCount))
+        embed.add_field(name='Bot Developers:', value="<@230854079847464960>")
+
+        embed.set_footer(text=f"AHHHHHHHHHHHHH | {self.client.user.name}")
+        embed.set_author(name=self.client.user.name, icon_url=self.client.user.avatar_url)
+
+        await ctx.send(embed=embed)
 
 
 def setup(client):
