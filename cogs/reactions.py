@@ -76,11 +76,11 @@ class reactions(commands.Cog):
         big_no = '773090453850423317'
         user = payload.member
         if not payload.member.bot:
-            if payload.emoji.id == big_yes:
+            if str(payload.emoji.id) == big_yes:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said yes to the lets going request.')
                 return
-            elif payload.emoji.id == big_no:
+            elif str(payload.emoji.id) == big_no:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said no to the lets going request.')
                 return
