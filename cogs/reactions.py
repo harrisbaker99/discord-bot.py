@@ -72,8 +72,8 @@ class reactions(commands.Cog):
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-        big_yes = self.client.get_emoji(773090431416139777)
-        big_no = self.client.get_emoji(773090453850423317)
+        big_yes = 773090431416139777
+        big_no = 773090453850423317
         user = payload.member
         if not payload.member.bot:
             print(big_yes)
