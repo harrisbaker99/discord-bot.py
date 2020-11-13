@@ -45,10 +45,11 @@ class reactions(commands.Cog):
     async def lets_going(self, ctx):
         big_yes = self.client.get_emoji(773090431416139777)
         big_no = self.client.get_emoji(773090453850423317)
+
         options = ("Yes", "No")
         yes_no = (big_yes, big_no)
         embed = Embed(title="Lets Going?",
-                      description="Will you be available for a lets going?",
+                      description=f"{ctx.author.mention} has asked if you be available for a lets going?",
                       colour=random.choice(self.client.colour_list),
                       timestamp=datetime.utcnow())
 
@@ -59,7 +60,7 @@ class reactions(commands.Cog):
 
         lets_going = discord.utils.get(ctx.guild.roles, id=749257590520807455)
 
-        await ctx.send(f'{lets_going.mention}')
+        # await ctx.send(f'{lets_going.mention}')
 
         message = await ctx.send(embed=embed)
 
@@ -68,19 +69,23 @@ class reactions(commands.Cog):
 
         self.polls.append((message.channel.id, message.id))
 
-
-'''
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
-        if payload.message_id in (poll[1] for poll in self.polls):
-            message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
-
-            for reaction in message.reactions:
-                if (not payload.member.bot
-                        and payload.member in await reaction.users().flatten()
-                        and reaction.emoji != payload.emoji.name):
-                    await message.remove_reaction(reaction.emoji, payload.member)
-'''
+        message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
+        big_yes = self.client.get_emoji(773090431416139777)
+        big_no = self.client.get_emoji(773090453850423317)
+        user = payload.member
+        if not payload.member.bot:
+            if payload.emoji.name == big_yes:
+                await self.client.get_channel(payload.channel_id).send(
+                    f'{user.mention} has said yes to the lets going request.')
+                return
+            elif payload.emoji.name == big_no:
+                await self.client.get_channel(payload.channel_id).send(
+                    f'{user.mention} has said no to the lets going request.')
+                return
+            else:
+                return
 
 
 def setup(client):
