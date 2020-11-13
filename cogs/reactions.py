@@ -60,7 +60,7 @@ class reactions(commands.Cog):
 
         lets_going = discord.utils.get(ctx.guild.roles, id=749257590520807455)
 
-        # await ctx.send(f'{lets_going.mention}')
+        await ctx.send(f'{lets_going.mention}')
 
         message = await ctx.send(embed=embed)
 
