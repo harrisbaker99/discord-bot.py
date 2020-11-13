@@ -76,6 +76,8 @@ class reactions(commands.Cog):
         big_no = self.client.get_emoji(773090453850423317)
         user = payload.member
         if not payload.member.bot:
+            print(big_yes)
+            print(payload.emoji.name)
             if payload.emoji.name == big_yes:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said yes to the lets going request.')
