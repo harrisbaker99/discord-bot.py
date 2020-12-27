@@ -44,7 +44,7 @@ class reactions(commands.Cog):
     @commands.command(name="letsgoing", aliases=["lg", "g"])
     async def lets_going(self, ctx):
         big_yes = self.client.get_emoji(773090431416139777)
-        big_maybe = self.client.get_emoji(792601633828765736)
+        big_maybe = self.client.get_emoji(792601596797648926)
         big_no = self.client.get_emoji(773090453850423317)
 
         options = ("Yes", 'Maybe', "No")
