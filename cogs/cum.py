@@ -40,6 +40,19 @@ class Misc_Commands(commands.Cog):
         except ValueError:
             await ctx.send(f"Want to try a number next time bucko.")
 
+    @commands.command(name='nice', aliases=['n'], description='Nice')
+    async def nice(self, ctx, args=None):
+        emoji1 = self.client.get_emoji('🇳')
+        emoji2 = self.client.get_emoji('🇮')
+        emoji3 = self.client.get_emoji('🇨')
+        emoji4 = self.client.get_emoji('🇪')
+        # emoji1 = self.client.get_emoji(':regional_indicator_n')
+        # emoji2 = self.client.get_emoji(':regional_indicator_i:')
+        # emoji3 = self.client.get_emoji(':regional_indicator_c:')
+        # emoji4 = self.client.get_emoji(':regional_indicator_e:')
+        await ctx.send(f"{str(emoji1)} {str(emoji2)} {str(emoji3)} {str(emoji4)} ")
+        print(f"{str(emoji1)} {str(emoji2)} {str(emoji3)} {str(emoji4)} ")
+
 
 def setup(client):
     client.add_cog(Misc_Commands(client))

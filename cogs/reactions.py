@@ -84,7 +84,7 @@ class reactions(commands.Cog):
                 return
             elif str(payload.emoji.id) == big_maybe:
                 await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said maybe to the lets going request.')
+                    f'{user.mention} has said more than likely to join later to the lets going request.')
                 return
             elif str(payload.emoji.id) == big_no:
                 await self.client.get_channel(payload.channel_id).send(
