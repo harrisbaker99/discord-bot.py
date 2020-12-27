@@ -61,7 +61,7 @@ class reactions(commands.Cog):
 
         lets_going = discord.utils.get(ctx.guild.roles, id=749257590520807455)
 
-        await ctx.send(f'{lets_going.mention}')
+        # await ctx.send(f'{lets_going.mention}')
 
         message = await ctx.send(embed=embed)
 
@@ -74,21 +74,21 @@ class reactions(commands.Cog):
     async def on_raw_reaction_add(self, payload):
         message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
         big_yes = '773090431416139777'
-        big_no = '773090453850423317'
         big_maybe = '792601596797648926'
+        big_no = '773090453850423317'
         user = payload.member
         if not payload.member.bot:
             if str(payload.emoji.id) == big_yes:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said yes to the lets going request.')
                 return
-            elif str(payload.emoji.id) == big_no:
-                await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said no to the lets going request.')
-                return
             elif str(payload.emoji.id) == big_maybe:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said maybe to the lets going request.')
+                return
+            elif str(payload.emoji.id) == big_no:
+                await self.client.get_channel(payload.channel_id).send(
+                    f'{user.mention} has said no to the lets going request.')
                 return
             else:
                 return
