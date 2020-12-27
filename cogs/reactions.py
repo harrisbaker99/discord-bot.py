@@ -80,15 +80,15 @@ class reactions(commands.Cog):
         if not payload.member.bot:
             if str(payload.emoji.id) == big_yes:
                 await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said yes to the lets going request.')
+                    f'{user.mention} has said ***YES*** to the lets going request.')
                 return
             elif str(payload.emoji.id) == big_maybe:
                 await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said more than likely to join later to the lets going request.')
+                    f'{user.mention} has said ***LATER*** to the lets going request.')
                 return
             elif str(payload.emoji.id) == big_no:
                 await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said no to the lets going request.')
+                    f'{user.mention} has said ***NO*** to the lets going request.')
                 return
             else:
                 return
