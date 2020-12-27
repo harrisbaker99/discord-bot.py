@@ -45,15 +45,16 @@ class reactions(commands.Cog):
     async def lets_going(self, ctx):
         big_yes = self.client.get_emoji(773090431416139777)
         big_no = self.client.get_emoji(773090453850423317)
+        big_maybe = self.client.get_emoji(792601633828765736)
 
         options = ("Yes", "No")
-        yes_no = (big_yes, big_no)
+        emoji_options = (big_yes, big_maybe, big_no)
         embed = Embed(title="Lets Going?",
                       description=f"{ctx.author.mention} has asked if you be available for a lets going?",
                       colour=random.choice(self.client.colour_list),
                       timestamp=datetime.utcnow())
 
-        fields = [("Options", "\n".join([f"{yes_no[idx]} {option}" for idx, option in enumerate(options)]), False)]
+        fields = [("Options", "\n".join([f"{emoji_options[idx]} {option}" for idx, option in enumerate(options)]), False)]
 
         for name, value, inline in fields:
             embed.add_field(name=name, value=value, inline=inline)
@@ -64,7 +65,7 @@ class reactions(commands.Cog):
 
         message = await ctx.send(embed=embed)
 
-        for emoji in yes_no[:len(options)]:
+        for emoji in emoji_options[:len(options)]:
             await message.add_reaction(emoji)
 
         self.polls.append((message.channel.id, message.id))
@@ -74,6 +75,7 @@ class reactions(commands.Cog):
         message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
         big_yes = '773090431416139777'
         big_no = '773090453850423317'
+        big_maybe = '792601633828765736'
         user = payload.member
         if not payload.member.bot:
             if str(payload.emoji.id) == big_yes:
@@ -83,6 +85,10 @@ class reactions(commands.Cog):
             elif str(payload.emoji.id) == big_no:
                 await self.client.get_channel(payload.channel_id).send(
                     f'{user.mention} has said no to the lets going request.')
+                return
+            elif str(payload.emoji.id) == big_maybe:
+                await self.client.get_channel(payload.channel_id).send(
+                    f'{user.mention} has said maybe to the lets going request.')
                 return
             else:
                 return
