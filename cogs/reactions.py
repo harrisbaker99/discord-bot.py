@@ -44,10 +44,10 @@ class reactions(commands.Cog):
     @commands.command(name="letsgoing", aliases=["lg", "g"])
     async def lets_going(self, ctx):
         big_yes = self.client.get_emoji(773090431416139777)
-        big_no = self.client.get_emoji(773090453850423317)
         big_maybe = self.client.get_emoji(792601633828765736)
+        big_no = self.client.get_emoji(773090453850423317)
 
-        options = ("Yes", "No")
+        options = ("Yes", 'Maybe', "No")
         emoji_options = (big_yes, big_maybe, big_no)
         embed = Embed(title="Lets Going?",
                       description=f"{ctx.author.mention} has asked if you be available for a lets going?",
