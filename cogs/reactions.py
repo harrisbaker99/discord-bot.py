@@ -75,7 +75,7 @@ class reactions(commands.Cog):
         message = await self.client.get_channel(payload.channel_id).fetch_message(payload.message_id)
         big_yes = '773090431416139777'
         big_no = '773090453850423317'
-        big_maybe = '792601633828765736'
+        big_maybe = '792601596797648926'
         user = payload.member
         if not payload.member.bot:
             if str(payload.emoji.id) == big_yes:
