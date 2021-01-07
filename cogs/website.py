@@ -50,7 +50,7 @@ class website(commands.Cog):
     async def random(self, ctx, *args):
         arg_count = len(args)
         choice_list = list()
-        games = list(['Rocket League', 'Rainbow 6 Seige', 'Zombies', 'Warzone', 'Your Mum'])
+        games = list(['Rocket League', 'Rainbow 6 Siege', 'Zombies', 'War-zone', 'Your Mum'])
         choice_list.extend(args)
         if arg_count <= 0:
             embed = Embed(title="Ooga Booga",
@@ -64,6 +64,35 @@ class website(commands.Cog):
                           colour=random.choice(self.client.colour_list),
                           timestamp=datetime.utcnow())
             await ctx.send(embed=embed)
+
+    @commands.command(
+        name='R6S',
+        aliases=['r6', 'death', 'prank'],
+        description='Chooses who kills who'
+    )
+    async def r6s(self, ctx, arg1, arg2):
+        player_1 = str(arg1)
+        player_2 = str(arg2)
+
+        num = random.random()
+
+        if num <= 0.5:
+            embed = Embed(title="Ouch",
+                          description=f"***{player_1}*** gets to shoot ***{player_2}*** this round.",
+                          colour=random.choice(self.client.colour_list),
+                          timestamp=datetime.utcnow())
+            await ctx.send(embed=embed)
+        else:
+            embed = Embed(title="Wow Rigged",
+                          description=f"***{player_1}*** does not get to shoot ***{player_2}*** this round.",
+                          colour=random.choice(self.client.colour_list),
+                          timestamp=datetime.utcnow())
+            await ctx.send(embed=embed)
+
+    @r6s.error
+    async def reload_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send("Put in 2 names cobba.")
 
 
 def setup(client):
