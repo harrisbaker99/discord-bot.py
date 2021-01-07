@@ -42,12 +42,12 @@ class reactions(commands.Cog):
             self.polls.append((message.channel.id, message.id))
 
     @commands.command(name="letsgoing", aliases=["lg", "g"])
-    async def lets_going(self, ctx):
+    async def lets_going(self, ctx, args=None):
         big_yes = self.client.get_emoji(773090431416139777)
         big_maybe = self.client.get_emoji(792601596797648926)
         big_no = self.client.get_emoji(773090453850423317)
 
-        options = ("Yes", 'Maybe', "No")
+        options = ("Yes", "Later", "No")
         emoji_options = (big_yes, big_maybe, big_no)
         embed = Embed(title="Lets Going?",
                       description=f"{ctx.author.mention} has asked if you be available for a lets going?",

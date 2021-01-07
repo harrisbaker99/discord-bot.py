@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import os
+import random
 
 
 class website(commands.Cog):
@@ -38,6 +39,20 @@ class website(commands.Cog):
     async def jayden(self, ctx):
         website_img = os.path.abspath('./images/jaydengay.png')
         await ctx.send(file=discord.File(website_img))
+
+    @commands.command(
+        name='random choice',
+        aliases=['r', 'random', 'choice'],
+        description='Chooses a random choice from a list you provide'
+    )
+    async def random(self, ctx, *args):
+        arg_count = len(args)
+        choice_list = list()
+        choice_list.extend(args)
+        if arg_count <= 0:
+            await ctx.send("Specify some options to choose randomly.")
+        else:
+            await ctx.send(f'The random option chosen is {random.choice(choice_list)}')
 
 
 def setup(client):
