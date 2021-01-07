@@ -1,4 +1,6 @@
+from datetime import datetime
 import discord
+from discord import Embed
 from discord.ext import commands
 import os
 import random
@@ -48,11 +50,20 @@ class website(commands.Cog):
     async def random(self, ctx, *args):
         arg_count = len(args)
         choice_list = list()
+        games = list(['Rocket League', 'Rainbow 6 Seige', 'Zombies', 'Warzone', 'Your Mum'])
         choice_list.extend(args)
         if arg_count <= 0:
-            await ctx.send("Specify some options to choose randomly.")
+            embed = Embed(title="Ooga Booga",
+                          description=f"The random option chosen is ***{random.choice(games)}***",
+                          colour=random.choice(self.client.colour_list),
+                          timestamp=datetime.utcnow())
+            await ctx.send(embed=embed)
         else:
-            await ctx.send(f'The random option chosen is {random.choice(choice_list)}')
+            embed = Embed(title="Ooga Booga",
+                          description=f"The random option chosen is ***{random.choice(choice_list)}***",
+                          colour=random.choice(self.client.colour_list),
+                          timestamp=datetime.utcnow())
+            await ctx.send(embed=embed)
 
 
 def setup(client):
