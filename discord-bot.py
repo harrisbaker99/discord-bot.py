@@ -40,6 +40,7 @@ client.colour_list = [c for c in client.colours.values()]
 @client.command()
 @commands.is_owner()
 async def load(ctx, extension):
+    """Load cog."""
     client.load_extension(f'cogs.{extension}')
     await ctx.author.send(f'{extension} has been loaded.')
 
@@ -47,6 +48,7 @@ async def load(ctx, extension):
 @client.command()
 @commands.is_owner()
 async def unload(ctx, extension):
+    """Unload cog."""
     client.unload_extension(f'cogs.{extension}')
     await ctx.author.send(f'{extension} has been unloaded.')
 
