@@ -18,21 +18,27 @@ class reactions(commands.Cog):
         print(f'{self.__class__.__name__} Cog has been loaded\n---------------------')
 
     @commands.command(name="letsgoing", aliases=["lg", "g"])
-    async def lets_going(self, ctx, game: Optional[str] = "None"):
+    async def lets_going(self, ctx, *games: Optional[str]):
         """Pings Lets going role and provide poll in an optional chosen game."""
+        arg_count = len(games)
+        game_string = ""
+        for game in games:
+            game_string += game + " "
+
         big_yes = self.client.get_emoji(773090431416139777)
         big_maybe = self.client.get_emoji(792601596797648926)
         big_no = self.client.get_emoji(773090453850423317)
 
         options = ("Yes", "Later", "No")
         emoji_options = (big_yes, big_maybe, big_no)
-        if game == "None":
+        if arg_count <= 0:
             embed = Embed(title="Lets Going?",
                           description=f"{ctx.author.mention} has asked if you be available for a lets going?",
                           colour=random.choice(self.client.colour_list),
                           timestamp=datetime.utcnow())
         else:
-            embed = Embed(title=f"Lets Going in {game}?",
+            game_string = game_string[:-1]
+            embed = Embed(title=f"Lets Going in {game_string}?",
                           description=f"{ctx.author.mention} has asked if you be available for a lets going?",
                           colour=random.choice(self.client.colour_list),
                           timestamp=datetime.utcnow())
