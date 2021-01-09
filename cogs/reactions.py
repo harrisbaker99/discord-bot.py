@@ -58,7 +58,7 @@ class reactions(commands.Cog):
         for emoji in emoji_options[:len(options)]:
             await message.add_reaction(emoji)
 
-        self.polls.append((message.channel.id, message.id))
+        self.polls = list((message.channel.id, message.id))
 
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
@@ -66,21 +66,25 @@ class reactions(commands.Cog):
         big_maybe = '792601596797648926'
         big_no = '773090453850423317'
         user = payload.member
-        if not payload.member.bot:
-            if str(payload.emoji.id) == big_yes:
-                await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said ***YES*** to the lets going request.')
-                return
-            elif str(payload.emoji.id) == big_maybe:
-                await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said ***LATER*** to the lets going request.')
-                return
-            elif str(payload.emoji.id) == big_no:
-                await self.client.get_channel(payload.channel_id).send(
-                    f'{user.mention} has said ***NO*** to the lets going request.')
-                return
-            else:
-                return
+        if payload.guild_id is None:
+            return
+        else:
+            if payload.message_id in self.polls:
+                if not payload.member.bot:
+                    if str(payload.emoji.id) == big_yes:
+                        await self.client.get_channel(payload.channel_id).send(
+                            f'{user.mention} has said ***YES*** to the lets going request.')
+                        return
+                    elif str(payload.emoji.id) == big_maybe:
+                        await self.client.get_channel(payload.channel_id).send(
+                            f'{user.mention} has said ***LATER*** to the lets going request.')
+                        return
+                    elif str(payload.emoji.id) == big_no:
+                        await self.client.get_channel(payload.channel_id).send(
+                            f'{user.mention} has said ***NO*** to the lets going request.')
+                        return
+                    else:
+                        return
 
 
 def setup(client):

@@ -2,13 +2,15 @@ import discord
 from discord.ext import commands
 import json
 from pathlib import Path
+from discord.ext.commands import when_mentioned_or
 import os
 
 cwd = Path(__file__).parents[0]
 cwd = str(cwd)
 print(f"{cwd}\n---------------------")
+PREFIX = "."
 
-client = commands.Bot(command_prefix=".", owner_id=230854079847464960, help_command=None)
+client = commands.Bot(command_prefix=PREFIX, owner_id=230854079847464960, help_command=None)
 secret_file = json.load(open(cwd + '/bot_config/secret.json'))
 client.config_token = secret_file['token']
 client.cwd = cwd
