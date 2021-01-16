@@ -123,7 +123,7 @@ class SoundClips(commands.Cog):
                 voice = await channel.connect()
             voice.play(discord.FFmpegPCMAudio(audio), after=lambda: print(f"Playing {audio}"))
             voice.source = discord.PCMVolumeTransformer(voice.source)
-            voice.source.volume = 0.2
+            voice.source.volume = 0.7
             await asyncio.sleep(int(3))
             voice.stop()
             await voice.disconnect()
