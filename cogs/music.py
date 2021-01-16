@@ -15,6 +15,7 @@ class Music(commands.Cog):
 
     @commands.command(name='play', aliases=['p'])
     async def play(self, ctx, url: str):
+        """I play a song. I only can use youtube links."""
         song_there = os.path.isfile('song.mp3')
         try:
             if song_there:
@@ -48,6 +49,7 @@ class Music(commands.Cog):
 
     @commands.command(name='leave', aliases=['l'])
     async def leave(self, ctx):
+        """I leave the voice channel. I undertand that i can be annoying at times."""
         voice = get(self.client.voice_clients, guild=ctx.guild)
         if voice.is_connected():
             await voice.disconnect()
@@ -56,6 +58,7 @@ class Music(commands.Cog):
 
     @commands.command(name='pause')
     async def pause(self, ctx):
+        """I pause the currently playing music."""
         voice = get(self.client.voice_clients, guild=ctx.guild)
         if voice.is_playing():
             voice.pause()
@@ -64,6 +67,7 @@ class Music(commands.Cog):
 
     @commands.command(name='resume')
     async def resume(self, ctx):
+        """I resume the current song that was paused."""
         voice = get(self.client.voice_clients, guild=ctx.guild)
         if voice.is_paused():
             voice.resume()
@@ -72,6 +76,7 @@ class Music(commands.Cog):
 
     @commands.command(name='stop')
     async def stop(self, ctx):
+        """I stop the current song. I will need a new youtube link after this."""
         voice = get(self.client.voice_clients, guild=ctx.guild)
         voice.stop()
 
