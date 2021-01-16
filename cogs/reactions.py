@@ -1,6 +1,5 @@
 from datetime import datetime
 from typing import Optional
-
 import discord
 from discord import Embed
 from discord.ext import commands

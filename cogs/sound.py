@@ -90,7 +90,7 @@ class SoundClips(commands.Cog):
             await ctx.send(f"You seem a bit slow in the head because '{seconds}' is not a number.")
 
     @commands.command(name='fug')
-    async def fug(self, ctx, seconds=None):
+    async def fug(self, ctx, *seconds: Optional[int]):
         """Fug ya mum."""
         audio = os.path.abspath('./SoundEffects/fugyamum.mp3')
         channel = ctx.message.author.voice.channel
@@ -110,8 +110,29 @@ class SoundClips(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head because '{seconds}' is not a number.")
 
+    @commands.command(name='cumrag', aliases=['rag', 'cr'])
+    async def cumrag(self, ctx, *seconds: Optional[int]):
+        """You crusty cum reeeaaaggg."""
+        audio = os.path.abspath('./SoundEffects/cumrag.mp3')
+        channel = ctx.message.author.voice.channel
+        voice = get(self.client.voice_clients, guild=ctx.guild)
+        try:
+            if voice and voice.is_connected():
+                await voice.move_to(channel)
+            else:
+                voice = await channel.connect()
+            voice.play(discord.FFmpegPCMAudio(audio), after=lambda: print(f"Playing {audio}"))
+            voice.source = discord.PCMVolumeTransformer(voice.source)
+            voice.source.volume = 0.2
+            await asyncio.sleep(int(3))
+            voice.stop()
+            await voice.disconnect()
+            await discord.Message.delete(ctx.message)
+        except ValueError:
+            await ctx.send(f"You seem a bit slow in the head because '{seconds}' is not a number.")
+
     @commands.command(name='cumslam', aliases=['slam'])
-    async def cumslam(self, ctx, args=None):
+    async def cumslam(self, ctx, *seconds: Optional[int]):
         """Cum slam ya mum."""
         audio = os.path.abspath('./SoundEffects/cumslamyamum.mp3')
         channel = ctx.message.author.voice.channel
@@ -129,7 +150,7 @@ class SoundClips(commands.Cog):
             await voice.disconnect()
             await discord.Message.delete(ctx.message)
         except ValueError:
-            await ctx.send(f"You seem a bit slow in the head because '{args}' is not a number.")
+            await ctx.send(f"You seem a bit slow in the head because '{seconds}' is not a number.")
 
 
 def setup(client):
