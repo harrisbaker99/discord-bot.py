@@ -147,6 +147,15 @@ class Misc_Commands(commands.Cog):
         except ValueError:
             await ctx.send(f"You seem a bit slow in the head because '{value}' is not a number.")
 
+    @commands.command(
+        name='hung',
+        aliases=['fat', 'hung', 'cock', 'fatcock']
+    )
+    async def fat_cock(self, ctx):
+        """This displays an image of the faggot."""
+        fat_cock = os.path.abspath('./images/hung-fat-daddy-fat-cock.jpg')
+        await ctx.send(file=discord.File(fat_cock))
+
 
 def setup(client):
     client.add_cog(Misc_Commands(client))
