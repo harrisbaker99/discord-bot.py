@@ -153,7 +153,7 @@ class Misc_Commands(commands.Cog):
     )
     async def fat_cock(self, ctx):
         """This displays an image of the faggot."""
-        fat_cock = os.path.abspath('./images/hung-fat-daddy-fat-cock.jpg')
+        fat_cock = os.path.abspath('./images/hung-fat-daddy-fat-cock.png')
         await ctx.send(file=discord.File(fat_cock))
 
 
