@@ -149,7 +149,7 @@ class Misc_Commands(commands.Cog):
 
     @commands.command(
         name='hung',
-        aliases=['fat', 'hung', 'cock', 'fatcock']
+        aliases=['fat', 'cock', 'fatcock']
     )
     async def fat_cock(self, ctx):
         """This displays an image of the faggot."""
