@@ -152,7 +152,7 @@ class Misc_Commands(commands.Cog):
         aliases=['fat', 'cock', 'fatcock']
     )
     async def fat_cock(self, ctx):
-        """This displays an image of the faggot."""
+        """This displays an image of the god himself."""
         fat_cock = os.path.abspath('./images/hung-fat-daddy-fat-cock.png')
         await ctx.send(file=discord.File(fat_cock))
 
